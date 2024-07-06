@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,14 +43,19 @@ public class GameManager : MonoBehaviour
             roundResult = true;
             parameterPasser.roundResult = true;
             Debug.Log("Success");
-            SceneManager.LoadScene("Check");
         }
         else
         {
             roundResult = false;
             parameterPasser.roundResult = false;
             Debug.Log("Failed");
-            SceneManager.LoadScene("Check");
         }
+
+        
+    }
+
+    public void LoadCheckScene()
+    {
+        SceneManager.LoadScene("Check");
     }
 }

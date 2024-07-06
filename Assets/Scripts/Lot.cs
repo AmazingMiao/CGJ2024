@@ -7,6 +7,7 @@ public class Lot : MonoBehaviour
 {
 
     public Rigidbody2D rb;
+    public BoxCollider2D coll;
 
     public bool isGood;
 
@@ -15,6 +16,7 @@ public class Lot : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
