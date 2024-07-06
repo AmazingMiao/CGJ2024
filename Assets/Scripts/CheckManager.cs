@@ -22,7 +22,7 @@ public class CheckManager : MonoBehaviour
         }
         else
         {
-            dataManager.phase++;
+            // dataManager.phase++;
             if(dataManager.phase >= 3)
             {
                 isDead = true;

@@ -95,10 +95,11 @@ public class CSVReader : MonoBehaviour
             return null;
         }
     }
-    public void CSVUser(int row, int col)
+    public string CSVUser(int row, int col)
     {
         // 读取CSV文件中的特定值,调用时行数以Random方法生成的数组成员nLine[]代替,下为示例
         string value = GetValue(row, col); // 获取第1行第2列的值
         Debug.Log($"[{row},{col}]的标签: {value}");
+        return value;
     }
 }

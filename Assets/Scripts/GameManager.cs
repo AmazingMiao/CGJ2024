@@ -11,15 +11,22 @@ public class GameManager : MonoBehaviour
     public LotBox lotBox;
     public RandomCharcterCreater randomCharcterCreater;
     public ParameterPasser parameterPasser;
+    public DataManager dataManager;
 
     public bool roundResult;
 
     // Start is called before the first frame update
     void Start()
     {
+        dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
         lotBox = GameObject.Find("LotBox").GetComponent<LotBox>();
         randomCharcterCreater = GameObject.Find("Character Generator").GetComponent<RandomCharcterCreater>();
         parameterPasser = GameObject.Find("Parameter Passer").GetComponent<ParameterPasser>();
+
+        GameObject.Find("MusicSpeaker").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/" + dataManager.phase);
+        GameObject.Find("MusicSpeaker").GetComponent<AudioSource>().Play();
+
+        GameObject.Find("buddha").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Props/buddha_" + dataManager.phase);
     }
 
     // Update is called once per frame
@@ -48,6 +55,7 @@ public class GameManager : MonoBehaviour
         {
             roundResult = false;
             parameterPasser.roundResult = false;
+            dataManager.phase++;
             Debug.Log("Failed");
         }
 

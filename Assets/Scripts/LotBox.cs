@@ -8,6 +8,7 @@ public class LotBox : MonoBehaviour
 {
 
     public GameManager gameManager;
+    public DataManager dataManager;
     public Num numGood;
     public Num numBad;
     public List<Lot> lotsInBox;
@@ -18,6 +19,7 @@ public class LotBox : MonoBehaviour
         numGood = GameObject.Find("numGood").GetComponent<Num>();
         numBad = GameObject.Find("numBad").GetComponent<Num>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
         lotsInBox = new List<Lot>();
     }
 
@@ -129,6 +131,11 @@ public class LotBox : MonoBehaviour
             lot.transform.position=Vector3.MoveTowards(lot.transform.position, new Vector3(0,0,0), 7.5f*Time.deltaTime);
             yield return 0;
         }
+        
+        GameObject.Find("buddha").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Props/buddha_" + dataManager.phase);
+        GameObject.Find("buddha").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("SFX/buddhaChange");
+        GameObject.Find("buddha").GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(1f);
         gameManager.Invoke("LoadCheckScene", 0f);
     }

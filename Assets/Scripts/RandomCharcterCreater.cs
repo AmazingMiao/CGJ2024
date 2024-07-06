@@ -12,8 +12,11 @@ public class RandomCharcterCreater : MonoBehaviour
     public bool richment;
     public int nLine;
     public int count;
+    public int typeID;
     public int[] nLines;
     public string characterSpriteName;
+
+    public List<string> characterContent;
 
     // Start is called before the first frame update
     void Start()
@@ -47,14 +50,17 @@ public class RandomCharcterCreater : MonoBehaviour
 
         if(cSVReader.csvFile.name.Equals("money_list"))
         {
+            typeID = 0;
             characterSpriteName = "char_money_";
         }
         else if(cSVReader.csvFile.name.Equals("love_list"))
         {
+            typeID = 1;
             characterSpriteName = "char_love_";
         }
         else if(cSVReader.csvFile.name.Equals("ambition_list"))
         {
+            typeID = 2;
             characterSpriteName = "char_ambition_";
         }
 
@@ -112,7 +118,7 @@ public class RandomCharcterCreater : MonoBehaviour
         {
             // MoneylistGenerator();
             // nLines[i] = nLine; // 将生成的行数存入数组，之后在CSVUser中调用为行数查找属性
-            cSVReader.CSVUser(MoneylistGenerator(result, richment, i), i);
+            characterContent.Add(cSVReader.CSVUser(MoneylistGenerator(result, richment, i), i));
         }
 
     }
