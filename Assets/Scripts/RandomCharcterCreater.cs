@@ -67,7 +67,7 @@ public class RandomCharcterCreater : MonoBehaviour
             characterSpriteName += "rich_";
         }
 
-        characterSpriteName += Random.Range(0,2);
+        characterSpriteName += Random.Range(0,3);
 
         characterSr.sprite = Resources.Load<Sprite>("Characters/"+characterSpriteName);
 
