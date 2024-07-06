@@ -34,25 +34,28 @@ public class ButtonShowText : MonoBehaviour
     public void ShowText()
     {
         // 将文本框面板由隐藏改为显示
-        characterTextBoxPanel.enabled = true;
+        
         
         if(textTypeID == 1)
         {
+            characterTextBoxPanel.enabled = true;
             playerTextBoxPanel.enabled = false;
             characterTextBoxPanel.text = randomCharcterCreater.characterContent[textTypeID].Remove(0,2);
         }
         else if(textTypeID == 2)
         {
-            playerTextBoxPanel.enabled = true;
+            StartCoroutine(ShowType2Text());
+            // playerTextBoxPanel.enabled = true;
             // 设置文本框中的文本
-            playerTextBoxPanel.text = playerTexts[Random.Range(0,7)];
+            // playerTextBoxPanel.text = playerTexts[Random.Range(0,7)];
             // 轮播至下一个文本
             // currentIndex = (currentIndex + 1) % playerTexts.Length;
             //更改currentIndex控制轮播组数
-            characterTextBoxPanel.text = randomCharcterCreater.characterContent[textTypeID].Remove(0,2);
+            // characterTextBoxPanel.text = randomCharcterCreater.characterContent[textTypeID].Remove(0,2);
         }
         else if(textTypeID == 3)
         {
+            characterTextBoxPanel.enabled = true;
             playerTextBoxPanel.enabled = false;
             characterTextBoxPanel.text = randomCharcterCreater.characterContent[textTypeID].Remove(0,2);
         }
@@ -65,5 +68,14 @@ public class ButtonShowText : MonoBehaviour
         //将文本框ui隐藏
         characterTextBoxPanel.enabled = false;
         playerTextBoxPanel.enabled = false;
+    }
+
+    IEnumerator ShowType2Text()
+    {
+        playerTextBoxPanel.enabled = true;
+        playerTextBoxPanel.text = playerTexts[Random.Range(0,7)];
+        yield return new WaitForSeconds(1);
+        characterTextBoxPanel.enabled = true;
+        characterTextBoxPanel.text = randomCharcterCreater.characterContent[textTypeID].Remove(0,2);
     }
 }
