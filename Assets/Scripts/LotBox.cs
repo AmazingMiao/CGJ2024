@@ -59,4 +59,25 @@ public class LotBox : MonoBehaviour
             }
         }
     }
+
+    public bool TrueLotDrawed()
+    {
+        List<int> lots = new List<int>();
+        for(int i = 0; i < numGood.num; i++)
+        {
+            lots.Add(1);
+        }
+
+        for(int i = 0; i < numBad.num; i++)
+        {
+            lots.Add(0);
+        }
+
+        if(lots[Random.Range(0, lots.Count)] == 1)
+        {
+            return true;
+        }
+        else
+        return false;
+    }
 }
