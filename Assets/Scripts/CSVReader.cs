@@ -14,12 +14,14 @@ public class CSVReader : MonoBehaviour
 
 
     //使用时在unity中创建不同空object以使用此脚本
-    public TextAsset csvFile; // 在Inspector里把CSV文件拖到此字段
+    public TextAsset[] csvFiles; // 在Inspector里把CSV文件拖到此字段
+    public TextAsset csvFile;
 
-    private string[,] grid;
+    public string[,] grid;
 
     void Awake()
     {
+        csvFile = csvFiles[Random.Range(0, csvFiles.Length)];
         grid = ReadCSV(csvFile);
         // PrintGrid(grid);
     }
@@ -50,6 +52,8 @@ public class CSVReader : MonoBehaviour
         // 获取行数和列数
         int rowCount = rows.Count;
         int colCount = rows[0].Length;
+
+        Debug.Log(rowCount + " " + colCount);
 
         // 创建二维数组
         string[,] grid = new string[rowCount, colCount];
