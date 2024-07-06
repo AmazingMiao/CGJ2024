@@ -111,14 +111,14 @@ public class LotBox : MonoBehaviour
         while(lot.transform.position!=transform.position)
         {
             Debug.Log(1);
-            lot.transform.position=Vector3.MoveTowards(lot.transform.position,transform.position, 3f*Time.deltaTime);
+            lot.transform.position=Vector3.MoveTowards(lot.transform.position,transform.position, 4.5f*Time.deltaTime);
             yield return 0;
         }
         // yield return new WaitForSeconds(1f);
         while(lot.transform.position!=new Vector3(transform.position.x, transform.position.y + 5, 0))
         {
             // Debug.Log(1);
-            lot.transform.position=Vector3.MoveTowards(lot.transform.position, new Vector3(transform.position.x, transform.position.y + 5, 0), 4f*Time.deltaTime);
+            lot.transform.position=Vector3.MoveTowards(lot.transform.position, new Vector3(transform.position.x, transform.position.y + 5, 0), 6f*Time.deltaTime);
             yield return 0;
         };
         lot.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
@@ -126,7 +126,7 @@ public class LotBox : MonoBehaviour
         while(lot.transform.position!=new Vector3(0,0,0))
         {
             // Debug.Log(1);
-            lot.transform.position=Vector3.MoveTowards(lot.transform.position, new Vector3(0,0,0), 5f*Time.deltaTime);
+            lot.transform.position=Vector3.MoveTowards(lot.transform.position, new Vector3(0,0,0), 7.5f*Time.deltaTime);
             yield return 0;
         }
         yield return new WaitForSeconds(1f);
