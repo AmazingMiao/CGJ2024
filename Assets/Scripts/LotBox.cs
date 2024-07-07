@@ -112,7 +112,7 @@ public class LotBox : MonoBehaviour
         lot.rb.bodyType = RigidbodyType2D.Kinematic;
         while(lot.transform.position!=transform.position)
         {
-            Debug.Log(1);
+            // Debug.Log(1);
             lot.transform.position=Vector3.MoveTowards(lot.transform.position,transform.position, 4.5f*Time.deltaTime);
             yield return 0;
         }
